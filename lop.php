@@ -1338,7 +1338,7 @@ function masslooking_v2($data, $ig, $delay) {
                 $followers = $ig->people->getFollowers($d['pk'], $d['rank_token'], null, $d['max_id']);
                 $data[$key]['begin_gf'] = strtotime(date("Y-m-d H:i:s"));
 
-                if (empty($followers->getUsers())) { 
+                if ($followers->getUsers()) { 
                     output("@" . $d['username'] . " don't have any follower.");
                     unset($data[$key]);
                     continue;
